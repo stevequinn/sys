@@ -1,4 +1,4 @@
-"Basic settings
+" Basic settings
 set nocompatible            " Eliminate backwards-compatability
 set number                  " Enable line numbers
 set ruler                   " Turn on the ruler
@@ -41,6 +41,7 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'shougo/unite.vim'
 Plugin 'shougo/vimproc.vim'
 Plugin 'Shougo/neomru.vim'
+Plugin 'shougo/neossh.vim'
 
 set laststatus=2	" Req for single file vim-airline view
 
@@ -50,6 +51,7 @@ set laststatus=2	" Req for single file vim-airline view
 let g:unite_data_directory='~/.vim/.cache/unite'
 let g:unite_enable_start_insert=1
 let g:unite_source_history_yank_enable=1
+let g:vimfiler_as_default_explorer=1
 let g:unite_prompt='» '
 let g:unite_split_rule = 'botright'
 if executable('ag')
@@ -57,10 +59,11 @@ if executable('ag')
 	let g:unite_source_grep_default_opts='--nocolor --nogroup -S -C4'
 	let g:unite_source_grep_recursive_opt=''
 endif
-nnoremap <silent> <c-p> :Unite -auto-resize file file_mru file_rec/async<cr>
+nnoremap <silent> <c-p> :Unite -no-split file file_mru file_rec/async<cr>
 
 " Unite find
 nnoremap <space>/ :Unite grep:.<cr>
+
 
 " Post-vundle
 call vundle#end()
