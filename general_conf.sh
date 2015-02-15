@@ -2,6 +2,8 @@
 
 # Set to debug mode to view output when executing
 set -x
+ 
+ln -s dot.vimrc ~/.vimrc
 
 #
 # Git configuration
