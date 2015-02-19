@@ -3,7 +3,13 @@
 # Set to debug mode to view output when executing
 set -x
  
-ln -s dot.vimrc ~/.vimrc
+ln -sf ~/sys/dot.vimrc ~/.vimrc
+git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+vim +PluginInstall +qall
+
+# Fix for solarized color Vundle install.
+mkdir ~/.vim/colors
+cp  ~/.vim/bundle/vim-colors-solarized/colors/solarized.vim ~/.vim/colors
 
 #
 # Git configuration
