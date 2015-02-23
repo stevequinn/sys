@@ -11,6 +11,12 @@ vim +PluginInstall +qall
 mkdir ~/.vim/colors
 cp  ~/.vim/bundle/vim-colors-solarized/colors/solarized.vim ~/.vim/colors
 
+# Required installs for vim plugins
+sudo apt-get install exuberant-ctags
+
+# Required vim package mods
+~/.vim/bundle/vimproc.vim/make
+
 #
 # Git configuration
 #

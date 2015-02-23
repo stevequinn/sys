@@ -41,6 +41,7 @@ Plugin 'shougo/unite.vim'
 Plugin 'shougo/vimproc.vim'
 Plugin 'Shougo/neomru.vim'
 Plugin 'shougo/neossh.vim'
+Plugin 'kchmck/vim-coffee-script'
 
 set laststatus=2	" Req for single file vim-airline view
 
