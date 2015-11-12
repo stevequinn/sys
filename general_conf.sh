@@ -2,17 +2,25 @@
 
 # Set to debug mode to view output when executing
 set -x
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
  
-ln -sf ~/sys/dot.vimrc ~/.vimrc
+ln -sf $DIR/dot.vimrc ~/.vimrc
 git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 vim +PluginInstall +qall
 
-# Fix for solarized color Vundle install.
-mkdir ~/.vim/colors
+# Fix for Vundle color installs.
+mkdir -p ~/.vim/colors
 cp  ~/.vim/bundle/vim-colors-solarized/colors/solarized.vim ~/.vim/colors
+cp  ~/.vim/bundle/badwolf/colors/badwolf.vim ~/.vim/colors
+
+mkdir -p ~/.vim/backup
+mkdir -p ~/.vim/swap
+mkdir -p ~/.vim/undo
 
 # Required installs for vim plugins
 sudo apt-get install exuberant-ctags
+sudo apt-get install silversearcher-ag
 
 # Required vim package mods
 ~/.vim/bundle/vimproc.vim/make
