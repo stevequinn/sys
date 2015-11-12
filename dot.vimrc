@@ -8,7 +8,7 @@ set wildmenu                " visual autocomplete for command menu
 set showmatch               " highlight matching [{()}]
 syntax enable               " Syntax highlighting
 " set background=dark
-" set background=light
+ set background=light
 " let g:solarized_visibility = "high"
 " let g:solarized_contrast = "high"
 " let g:solarized_termcolors=16
@@ -58,7 +58,6 @@ Plugin 'plasticboy/vim-markdown'
 " Plugin 'shougo/vimproc.vim'
 " Plugin 'Shougo/neomru.vim'
 " Plugin 'shougo/neossh.vim'
-
 set laststatus=2	" Req for single file vim-airline view
 
 " Ctr-P fuzzy search
