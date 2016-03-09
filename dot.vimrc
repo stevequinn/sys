@@ -6,15 +6,17 @@ set cursorline              " Highlight current line
 set showcmd
 set wildmenu                " visual autocomplete for command menu
 set showmatch               " highlight matching [{()}]
+set autoread                " auto read a file on focus
+set updatetime=250
+
 syntax enable               " Syntax highlighting
-set background=dark
-" set background=light
+" set background=dark
+set background=light
 " let g:solarized_visibility = "high"
 " let g:solarized_contrast = "high"
 " let g:solarized_termcolors=16
 " colorscheme solarized
 " colorscheme monokai
-
 colorscheme badwolf
 
 " Indentation
@@ -33,8 +35,6 @@ set backupdir=~/.vim/backup//
 set directory=~/.vim/swap//
 set undodir=~/.vim/undo//
 
-set updatetime=250
-
 filetype indent on
 
 " Plugins
@@ -50,7 +50,7 @@ Plugin 'scrooloose/syntastic'
 Plugin 'bling/vim-airline'
 Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-easytags'
-Plugin 'altercation/vim-colors-solarized'
+" Plugin 'altercation/vim-colors-solarized'
 Plugin 'sjl/badwolf'
 Plugin 'othree/html5.vim'
 Plugin 'leafgarland/typescript-vim'
