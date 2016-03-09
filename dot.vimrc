@@ -7,13 +7,12 @@ set showcmd
 set wildmenu                " visual autocomplete for command menu
 set showmatch               " highlight matching [{()}]
 syntax enable               " Syntax highlighting
-" set background=dark
- set background=light
+set background=dark
+" set background=light
 " let g:solarized_visibility = "high"
 " let g:solarized_contrast = "high"
 " let g:solarized_termcolors=16
 " colorscheme solarized
-
 " colorscheme monokai
 
 colorscheme badwolf
@@ -23,7 +22,7 @@ set tabstop=4 " number of visual spaces per TAB
 set softtabstop=4   " number of spaces in tab when editing
 set shiftwidth=4
 set expandtab       " tabs are spaces
-    
+ 
 " Resize splits when the window is resized
 au VimResized * exe "normal! \<c-w>="
 
@@ -33,6 +32,8 @@ au VimResized * exe "normal! \<c-w>="
 set backupdir=~/.vim/backup//
 set directory=~/.vim/swap//
 set undodir=~/.vim/undo//
+
+set updatetime=250
 
 filetype indent on
 
@@ -54,6 +55,10 @@ Plugin 'sjl/badwolf'
 Plugin 'othree/html5.vim'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'plasticboy/vim-markdown'
+Plugin 'kshenoy/vim-signature'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'ervandew/supertab'
+Plugin 'easymotion/vim-easymotion'
 " Plugin 'shougo/unite.vim'
 " Plugin 'shougo/vimproc.vim'
 " Plugin 'Shougo/neomru.vim'
