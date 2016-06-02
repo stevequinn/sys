@@ -8,6 +8,8 @@ set wildmenu                " visual autocomplete for command menu
 set showmatch               " highlight matching [{()}]
 set autoread                " auto read a file on focus
 set updatetime=250
+set ignorecase              " ignore case when searching
+set title                   " Change the terminals title
 
 syntax enable               " Syntax highlighting
 " set background=dark
@@ -20,6 +22,8 @@ set background=light
 colorscheme badwolf
 
 " Indentation
+set autoindent
+set copyindent
 set tabstop=4 " number of visual spaces per TAB
 set softtabstop=4   " number of spaces in tab when editing
 set shiftwidth=4
