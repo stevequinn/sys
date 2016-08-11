@@ -1,0 +1,19 @@
+#!/bin/sh
+
+SMS_URL=https://api.twilio.com/2010-04-01/Accounts/$TWILIO_USER/Messages.json
+
+if [ -z $TWILIO_USER ] || [ -z $TWILIO_TOKEN ] || [ -z $TWILIO_FROM ]; then
+    echo "You need to set the TWILIO_USER, TWILIO_TOKEN and TWILIO_FROM environment variables."
+    return
+fi
+
+if [ -z $2 ] || [ -z $1 ]; then
+    echo "Usage: ./twilio_send_sms 'sms body' 'to number'"
+    return
+fi
+
+curl -X POST "$SMS_URL" \
+    --data-urlencode "To=$2" \
+    --data-urlencode "From=$TWILIO_FROM"  \
+    --data-urlencode "Body=$1" \
+    -u $TWILIO_USER:$TWILIO_TOKEN
