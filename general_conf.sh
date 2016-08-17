@@ -4,7 +4,7 @@
 set -x
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
- 
+
 ln -sf $DIR/dot.vimrc ~/.vimrc
 git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 vim +PluginInstall +qall
@@ -32,3 +32,6 @@ git config --global user.name "Steve Quinn"
 git config --global user.email steve.m.quinn@gmail.com
 git config --global core.editor vim
 
+# Oh My Zsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+ln -sf $DIR/dot.zshrc ~/.zshrc
