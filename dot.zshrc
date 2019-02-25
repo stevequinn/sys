@@ -15,7 +15,7 @@ alias dev='ssh -A root@mva-rmi.local'
 alias phantomjs='~/dev/phantomjs_src/bin/phantomjs'
 alias gitlog='git log --pretty=format:"%h - %an, %ar : %s"'
 alias weather='curl -Acurl https://wttr.in/Australia+Victoria+Hawthorn'
-
+alias ron="curl -s http://ron-swanson-quotes.herokuapp.com/v2/quotes | sed -e 's/\"//g;s/\]//g;s/\[//g' | { cat $1; echo \"-Ron Swanson\" }"
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
 
