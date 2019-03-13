@@ -12,14 +12,15 @@ set ignorecase              " ignore case when searching
 set title                   " Change the terminals title
 
 syntax enable               " Syntax highlighting
-" set background=dark
-set background=light
+set background=dark
+" set background=light
 " let g:solarized_visibility = "high"
 " let g:solarized_contrast = "high"
 " let g:solarized_termcolors=16
 " colorscheme solarized
 " colorscheme monokai
-colorscheme badwolf
+" colorscheme badwolf
+colorscheme onedark
 
 " Indentation
 set autoindent
@@ -52,10 +53,13 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'kien/ctrlp.vim' " Ctrl-P has been replaced by Unite!
 Plugin 'scrooloose/syntastic'
 Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-easytags'
 " Plugin 'altercation/vim-colors-solarized'
-Plugin 'sjl/badwolf'
+" Plugin 'sjl/badwolf'
+Plugin 'sheerun/vim-polyglot'
+Plugin 'joshdick/onedark.vim'
 Plugin 'othree/html5.vim'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'plasticboy/vim-markdown'

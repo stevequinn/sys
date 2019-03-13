@@ -16,6 +16,7 @@ alias phantomjs='~/dev/phantomjs_src/bin/phantomjs'
 alias gitlog='git log --pretty=format:"%h - %an, %ar : %s"'
 alias weather='curl -Acurl https://wttr.in/Australia+Victoria+Hawthorn'
 alias ron="curl -s http://ron-swanson-quotes.herokuapp.com/v2/quotes | sed -e 's/\"//g;s/\]//g;s/\[//g' | { cat $1; echo \"-Ron Swanson\" }"
+alias light='~/dev/sys/light.py'
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
 
@@ -70,10 +71,8 @@ man() {
         man "$@"
 }
 
-transfer() {
-    if [ $# -eq 0 ]; then echo "No arguments specified. Usage:\necho transfer /tmp/test.md\ncat /tmp/test.md | transfer test.md"; return 1; fi
-    tmpfile=$( mktemp -t transferXXX ); if tty -s; then basefile=$(basename "$1" | sed -e 's/[^a-zA-Z0-9._-]/-/g'); curl --max-time 900 --progress-bar --upload-file "$1" "https://transfer.sh/$basefile" >> $tmpfile; else curl --max-time 900 --progress-bar --upload-file "-" "https://transfer.sh/$1" >> $tmpfile ; fi; cat $tmpfile; rm -f $tmpfile; }
-
+transfer() { if [ $# -eq 0 ]; then echo -e "No arguments specified. Usage:\necho transfer /tmp/test.md\ncat /tmp/test.md | transfer test.md"; return 1; fi 
+tmpfile=$( mktemp -t transferXXX ); if tty -s; then basefile=$(basename "$1" | sed -e 's/[^a-zA-Z0-9._-]/-/g'); curl --progress-bar --upload-file "$1" "https://transfer.sh/$basefile" >> $tmpfile; else curl --progress-bar --upload-file "-" "https://transfer.sh/$1" >> $tmpfile ; fi; cat $tmpfile; rm -f $tmpfile; } 
 
 #
 # Google Cloud Client & SDK PATH Config
