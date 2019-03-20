@@ -7,7 +7,7 @@ from phue import Bridge
 
 if len(sys.argv) < 3:
     print("No arguments specified")
-    print("Usage: light office|downstairs on|off")
+    print("Usage: light office|downstairs on|off|toggle")
     sys.exit()
 
 
@@ -21,8 +21,8 @@ def set_state(lights, light_name, state):
         print("Can't find the %s light. Maybe no poooowwwer?" % (light_name))
         sys.exit()
 
-    l.on = state
-    print("Turning %s the %s light" % ('on' if state else 'off', light_name))
+    l.on = not l.on if sys.argv[2] == 'toggle' else state
+    print("Turning %s the %s light" % ('on' if l.on else 'off', light_name))
 
 
 area = sys.argv[1]
