@@ -71,6 +71,7 @@ Plugin 'easymotion/vim-easymotion'
 " Plugin 'shougo/vimproc.vim'
 " Plugin 'Shougo/neomru.vim'
 " Plugin 'shougo/neossh.vim'
+Plugin 'junegunn/goyo.vim' " Markdown viewer
 set laststatus=2	" Req for single file vim-airline view
 
 " Ctr-P fuzzy search

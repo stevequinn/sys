@@ -18,6 +18,8 @@ alias weather='curl -Acurl https://wttr.in/Australia+Victoria+Hawthorn'
 alias temperature='curl -Acurl https://wttr.in/Australia+Victoria+Hawthorn\?format\=3'
 alias ron="curl -s http://ron-swanson-quotes.herokuapp.com/v2/quotes | sed -e 's/\"//g;s/\]//g;s/\[//g' | { cat $1; echo \"\n-Ron Swanson\" }"
 alias light='~/dev/sys/light.py'
+alias tunnel='ngrok' # I can never remember the name of this tunnel prog, so alias.
+
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
 
@@ -36,7 +38,18 @@ COMPLETION_WAITING_DOTS="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git)
+plugins=(
+    git
+    brew
+    pip
+    cp
+    docker
+    docker-compose
+    virtualenv
+    zsh-syntax-highlighting
+    zsh-autosuggestions
+)
+
 
 source $ZSH/oh-my-zsh.sh
 
@@ -51,6 +64,10 @@ export SVN_EDITOR=vim
 # Genymotion adb
 # export PATH=$PATH:/Applications/Genymotion.app/Contents/MacOS/tools
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+#
+# Custom functions
+#
 
 # Coloured cat output using pygmentize
 ccat(){
@@ -72,8 +89,16 @@ man() {
         man "$@"
 }
 
-transfer() { if [ $# -eq 0 ]; then echo -e "No arguments specified. Usage:\necho transfer /tmp/test.md\ncat /tmp/test.md | transfer test.md"; return 1; fi 
-tmpfile=$( mktemp -t transferXXX ); if tty -s; then basefile=$(basename "$1" | sed -e 's/[^a-zA-Z0-9._-]/-/g'); curl --progress-bar --upload-file "$1" "https://transfer.sh/$basefile" >> $tmpfile; else curl --progress-bar --upload-file "-" "https://transfer.sh/$1" >> $tmpfile ; fi; cat $tmpfile; rm -f $tmpfile; } 
+# Timer - count down from n.
+timer() {
+  total=$1
+  for ((i=total; i>0; i--)); do sleep 1; printf "Time remaining $i secs \r"; done
+  # echo -e "\a" # Uncomment for term bell.
+}
+
+# transer has been replaced by ffsend
+#transfer() { if [ $# -eq 0 ]; then echo -e "No arguments specified. Usage:\necho transfer /tmp/test.md\ncat /tmp/test.md | transfer test.md"; return 1; fi 
+#tmpfile=$( mktemp -t transferXXX ); if tty -s; then basefile=$(basename "$1" | sed -e 's/[^a-zA-Z0-9._-]/-/g'); curl --progress-bar --upload-file "$1" "https://transfer.sh/$basefile" >> $tmpfile; else curl --progress-bar --upload-file "-" "https://transfer.sh/$1" >> $tmpfile ; fi; cat $tmpfile; rm -f $tmpfile; } 
 
 #
 # Google Cloud Client & SDK PATH Config
