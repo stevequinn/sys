@@ -19,7 +19,7 @@ alias temperature='curl -Acurl https://wttr.in/Australia+Victoria+Hawthorn\?form
 alias ron="curl -s http://ron-swanson-quotes.herokuapp.com/v2/quotes | sed -e 's/\"//g;s/\]//g;s/\[//g' | { cat $1; echo \"\n-Ron Swanson\" }"
 alias light='~/dev/sys/light.py'
 alias tunnel='ngrok' # I can never remember the name of this tunnel prog, so alias.
-
+alias cp='rsync -ah --inplace --info=progress2'
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
 
@@ -47,7 +47,7 @@ plugins=(
     docker-compose
     virtualenv
     zsh-syntax-highlighting
-    zsh-autosuggestions
+#    zsh-autosuggestions
 )
 
 
@@ -61,6 +61,10 @@ export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 
 export SVN_EDITOR=vim
+
+export NVM_DIR="$HOME/.nvm"
+  [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+  [ -s "/usr/local/opt/nvm/etc/bash_completion" ] && . "/usr/local/opt/nvm/etc/bash_completion"  # This loads nvm bash_completion
 # Genymotion adb
 # export PATH=$PATH:/Applications/Genymotion.app/Contents/MacOS/tools
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
