@@ -41,12 +41,12 @@ COMPLETION_WAITING_DOTS="true"
 plugins=(
     git
     brew
-    pip
-    cp
-    docker
-    docker-compose
-    virtualenv
-    zsh-syntax-highlighting
+#    pip
+#    cp
+#    docker
+#    docker-compose
+#    virtualenv
+#    zsh-syntax-highlighting
 #    zsh-autosuggestions
 )
 
@@ -59,6 +59,7 @@ export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/X1
 export ANDROID_HOME=$HOME/Library/Android/sdk
 export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/platform-tools
+export PATH=/usr/local/opt/ruby/bin:/usr/local/lib/ruby/gems/2.6.0/bin:$PATH
 
 export SVN_EDITOR=vim
 
@@ -67,7 +68,7 @@ export NVM_DIR="$HOME/.nvm"
   [ -s "/usr/local/opt/nvm/etc/bash_completion" ] && . "/usr/local/opt/nvm/etc/bash_completion"  # This loads nvm bash_completion
 # Genymotion adb
 # export PATH=$PATH:/Applications/Genymotion.app/Contents/MacOS/tools
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+# test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 #
 # Custom functions
