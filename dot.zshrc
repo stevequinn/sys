@@ -20,6 +20,7 @@ alias ron="curl -s http://ron-swanson-quotes.herokuapp.com/v2/quotes | sed -e 's
 alias light='~/dev/sys/light.py'
 alias tunnel='ngrok' # I can never remember the name of this tunnel prog, so alias.
 alias cp='rsync -ah --inplace --info=progress2'
+alias open='wslview'
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
 
@@ -69,6 +70,10 @@ export NVM_DIR="$HOME/.nvm"
 # Genymotion adb
 # export PATH=$PATH:/Applications/Genymotion.app/Contents/MacOS/tools
 # test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+# Fix SSH agent in WSL
+eval $(ssh-agent -s)
+ssh-add ~/.ssh/id_ed25519_github
 
 #
 # Custom functions
