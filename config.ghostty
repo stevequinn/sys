@@ -1,0 +1,40 @@
+font-family = Menlo
+font-size = 14
+font-thicken = true
+font-thicken-strength = 40
+# adjust-cell-height = 2
+
+theme = Ayu
+# theme = "Monokai Pro"
+minimum-contrast = 1.1
+
+# background-opacity = 0.93
+# background-blur = true
+# background-opacity-cells = false
+
+window-padding-x = 8
+window-padding-y = 8
+window-vsync = true
+macos-titlebar-style = tabs
+# window-save-state = never
+quit-after-last-window-closed = true
+window-inherit-working-directory = true
+
+scrollback-limit = 50000
+
+cursor-style = block
+cursor-style-blink = false
+cursor-click-to-move = true
+
+selection-clear-on-typing = true
+selection-clear-on-copy = false
+
+macos-option-as-alt = true
+mouse-hide-while-typing = true
+mouse-scroll-multiplier = precision:1,discrete:3
+
+shell-integration = detect
+shell-integration-features = true
+scroll-to-bottom = keystroke,no-output
+
+command = $HOME/dev/scripts/tmux-start.sh

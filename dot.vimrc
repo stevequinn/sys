@@ -10,6 +10,7 @@ set autoread                " auto read a file on focus
 set updatetime=250
 set ignorecase              " ignore case when searching
 set title                   " Change the terminals title
+set clipboard=unnamed
 
 syntax enable               " Syntax highlighting
 set background=dark
@@ -55,7 +56,6 @@ Plugin 'scrooloose/syntastic'
 Plugin 'bling/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'xolox/vim-misc'
-Plugin 'xolox/vim-easytags'
 " Plugin 'altercation/vim-colors-solarized'
 " Plugin 'sjl/badwolf'
 Plugin 'sheerun/vim-polyglot'
