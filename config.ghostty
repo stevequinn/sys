@@ -37,4 +37,4 @@ shell-integration = detect
 shell-integration-features = true
 scroll-to-bottom = keystroke,no-output
 
-command = $HOME/dev/scripts/tmux-start.sh
+command = $HOME/dev/sys/tmux-start.sh
