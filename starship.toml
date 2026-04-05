@@ -1,0 +1,22 @@
+# Don't print a new line at the start of the prompt
+add_newline = false
+scan_timeout = 30           # ms — reduce if prompt feels slow
+command_timeout = 500       # ms — prevent hanging on slow git repos
+
+[time]
+disabled = false
+format = '[$time]($style) '
+time_format = '%d %b %Y %H:%M'   # e.g. 05 Apr 2026 09:48
+
+[cmd_duration]
+min_time = 2000        # only show if > 2 seconds
+format = 'took [$duration](bold yellow) '
+
+[aws]
+disabled = true
+
+[kubernetes]
+disabled = true
+
+[gcloud]
+disabled = true
