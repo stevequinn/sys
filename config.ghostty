@@ -4,7 +4,7 @@ font-size = 14
 font-thicken-strength = 40
 # adjust-cell-height = 2
 
-theme = Ayu
+theme = "Ayu Mirage"
 # theme = "Monokai Pro"
 minimum-contrast = 1.1
 
