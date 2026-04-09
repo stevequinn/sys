@@ -2,7 +2,8 @@
 add_newline = false
 scan_timeout = 30           # ms — reduce if prompt feels slow
 command_timeout = 500       # ms — prevent hanging on slow git repos
-format = "$directory$git_branch$git_status$package$docker_context$cmd_duration$character"
+# format = "$directory$git_branch$git_status$package$docker_context$cmd_duration$character"
+format = "$directory$git_branch$git_status$package$docker_context$python$cmd_duration$character"
 right_format = "$time"
 
 [directory]
@@ -37,7 +38,9 @@ disabled = true
 disabled = true
 
 [python]
-disabled = true
+disabled = false 
+format = '[(\($virtualenv\) )]($style)'
+style = "yellow bold"
 
 [nodejs]
 disabled = true
