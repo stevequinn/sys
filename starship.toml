@@ -2,11 +2,26 @@
 add_newline = false
 scan_timeout = 30           # ms — reduce if prompt feels slow
 command_timeout = 500       # ms — prevent hanging on slow git repos
+format = "$directory$git_branch$git_status$package$docker_context$cmd_duration$character"
+right_format = "$time"
+
+[directory]
+truncation_length = 4
+# truncate_to_repo = false 
+
+[git_branch]
+format = "[ $branch]($style) "
+style = "bold purple"
+
+[git_status]
+format = '([$all_status$ahead_behind]($style) )'
+style = "bold red"
 
 [time]
 disabled = false
 format = '[$time]($style) '
 time_format = '%d %b %Y %H:%M'   # e.g. 05 Apr 2026 09:48
+style = 'dimmed white'
 
 [cmd_duration]
 min_time = 2000        # only show if > 2 seconds
@@ -19,4 +34,28 @@ disabled = true
 disabled = true
 
 [gcloud]
+disabled = true
+
+[python]
+disabled = true
+
+[nodejs]
+disabled = true
+
+[rust]
+disabled = true
+
+[golang]
+disabled = true
+
+[java]
+disabled = true
+
+[ruby]
+disabled = true
+
+[php]
+disabled = true
+
+[dotnet]
 disabled = true
