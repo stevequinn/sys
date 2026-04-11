@@ -42,6 +42,7 @@ alias fujisim='exiftool -FilmMode -a -G1 -s'
 alias ron="curl -s http://ron-swanson-quotes.herokuapp.com/v2/quotes | sed -e 's/\"//g;s/\]//g;s/\[//g' | { cat; echo \"\n-Ron Swanson\"; }"
 
 # ── Functions ──
+
 ccat() {
   pygmentize -g "$@"
 }
@@ -76,16 +77,50 @@ ask() {
 
 tree() { find "${1:-.}" -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'; }
 
+# ── Lazy Load Helper ──
+# Usage: _lazy_load <loader_fn_name> cmd1 cmd2 ...
+# Creates a stub for each cmd that runs the loader once, then re-dispatches.
+# Use for loading commands on demand instead of slowing down the shell init
+_lazy_load() {
+  local loader="$1"; shift
+  local cmds=("$@")
+
+  # Define the one-time loader (called by any stub)
+  eval "
+  _run_${loader}() {
+    # Remove all stubs and this loader
+    for _c in ${cmds[*]}; do
+      unfunction \"\$_c\" 2>/dev/null
+    done
+    unfunction _run_${loader} 2>/dev/null
+
+    # Source the real tool
+    ${loader}_init
+
+    # Re-dispatch the original command
+    \"\$@\"
+  }
+  "
+
+  # Stamp out a stub for every managed command
+  for cmd in "${cmds[@]}"; do
+    eval "
+    ${cmd}() {
+      _run_${loader} ${cmd} \"\$@\"
+    }
+    "
+  done
+}
+
 # ── Tools ──
 
 # NVM (lazy-loaded for fast startup)
 export NVM_DIR="$HOME/.nvm"
-nvm() {
-  unfunction nvm
+nvm_init() {
   [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && . "/opt/homebrew/opt/nvm/nvm.sh"
   [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && . "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
-  nvm "$@"
 }
+_lazy_load nvm nvm node npm npx corepack
 
 # pnpm
 export PNPM_HOME="$HOME/Library/pnpm"
@@ -98,21 +133,62 @@ esac
 . "$HOME/.local/bin/env"
 
 # gcloud (lazy-loaded)
-gcloud() {
-  unfunction gcloud
+gcloud_init() {
   if [ -f '/Users/steveq/dev/google-cloud-sdk/path.zsh.inc' ]; then
     . '/Users/steveq/dev/google-cloud-sdk/path.zsh.inc'
     . '/Users/steveq/dev/google-cloud-sdk/completion.zsh.inc'
   fi
-  gcloud "$@"
 }
+_lazy_load gcloud gcloud gsutil bq
 
 # pyenv (lazy-loaded)
-pyenv() {
-  unfunction pyenv
+pyenv_init() {
   eval "$(command pyenv init -)"
-  pyenv "$@"
 }
+_lazy_load pyenv pyenv python python3 pip pip3
+
+# ── Python venv auto-activation ──
+_venv_auto() {
+  local venv_dir=""
+  local search="$PWD"
+
+  while [[ "$search" != "/" ]]; do
+    for candidate in .venv venv; do
+      if [[ -f "$search/$candidate/bin/activate" ]]; then
+        venv_dir="$search/$candidate"
+        break 2
+      fi
+    done
+    search="${search:h}"
+  done
+
+  if [[ -n "$venv_dir" ]]; then
+    if [[ "$VIRTUAL_ENV" != "$venv_dir" ]]; then
+      source "$venv_dir/bin/activate"
+
+      # Venv provides its own python/pip — remove pyenv stubs so they
+      # don't intercept. Only needed if pyenv hasn't fully loaded yet.
+      if (( ${+functions[_run_pyenv]} )); then
+        unfunction python python3 pip pip3 2>/dev/null
+      fi
+    fi
+  else
+    if [[ -n "$VIRTUAL_ENV" ]]; then
+      unset _OLD_VIRTUAL_PS1   # prevent deactivate from restoring a stale PS1
+      deactivate
+
+      # Restore pyenv stubs now that no venv is providing python/pip,
+      # but only if pyenv still hasn't been fully initialised.
+      if (( ${+functions[_run_pyenv]} )); then
+        _lazy_load pyenv pyenv python python3 pip pip3
+      fi
+    fi
+  fi
+}
+
+autoload -Uz add-zsh-hook
+add-zsh-hook chpwd _venv_auto
+_venv_auto  # run on shell init for terminals opened inside a project
 
 # ── Starship Prompt (must be last) ──
 eval "$(starship init zsh)"
