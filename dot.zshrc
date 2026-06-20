@@ -40,7 +40,7 @@ alias starter='sh ~/dev/0starters/starter.sh'
 alias piface='~/dev/apps/piface/.venv/bin/python ~/dev/apps/piface'
 alias fujisim='exiftool -FilmMode -a -G1 -s'
 alias ron="curl -s http://ron-swanson-quotes.herokuapp.com/v2/quotes | sed -e 's/\"//g;s/\]//g;s/\[//g' | { cat; echo \"\n-Ron Swanson\"; }"
-alias dufolder="du -sh * .[^.]* 2>/dev/null | sort -"
+alias dufolder="du -sh * .[^.]* 2>/dev/null | sort -h"
 
 # ── Functions ──
 
